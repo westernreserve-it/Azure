@@ -1,0 +1,16 @@
+---
+- hosts: all
+  tasks:
+  - name: Run PS1 file to start Azure sync
+    win_file:
+      path: C:\scripts
+      state: directory
+  
+  - name: Copy script
+    win_copy:
+      src: /var/scripts/AzureADSync.ps1
+      dest: 'C:\scripts\AzureADSync.ps1'
+      remote_src: no
+
+  - name: Run script to start Azure AD Sync.
+    win_command: powershell.exe -ExecutionPolicy Bypass -File C:/scripts/AzureADSync.ps1
