@@ -13,4 +13,4 @@
       remote_src: no
 
   - name: Run script to create proxys in AD for Azure.
-    win_command: powershell.exe -ExecutionPolicy Bypass -File C:/scripts/AzureADProxyAdd.ps1
+    win_shell: powershell.exe -ExecutionPolicy Bypass -File C:/scripts/AzureADProxyAdd.ps1
