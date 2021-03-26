@@ -1,0 +1,16 @@
+---
+- hosts: all
+  tasks:
+  - name: Run PS1 file to check for missing users from Veeam OneDrive backup
+    win_file:
+      path: C:\scripts
+      state: directory
+  
+  - name: Copy script
+    win_copy:
+      src: /var/scripts/Veeam-OneDrive-MissingUsers.ps1
+      dest: 'C:\scripts\Veeam-OneDrive-MissingUsers.ps1'
+      remote_src: no
+
+  - name: Run script to check for missing users from Veeam OneDrive backup
+    win_command: powershell.exe -ExecutionPolicy Bypass -File C:/scripts/Veeam-OneDrive-MissingUsers.ps1
